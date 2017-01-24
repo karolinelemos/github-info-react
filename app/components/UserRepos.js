@@ -1,30 +1,27 @@
-var React = require('react');
+import React from 'react';
 
 
-var buttonStyle = {
+const buttonStyle = {
   marginLeft: "10px"
 };
 
-var repoStyle = {
+const repoStyle = {
   padding: "10px",
   borderBottom: "2px solid #26A69A"
 }
 
-var UserRepos = React.createClass({
-  getInitialState: function() {
-    return {
-      reposCount: 0
+class UserRepos extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      reposCount: 0,
     }
-  },
-  componentWillReceiveProps: function(props) {
-    this.setState(
-      {
-        reposCount: props.repos.length
-      }
-    )
-  },
-  render: function() {
-    var repos = this.props.repos.map(function(repo, key) {
+  }
+  componentWillReceiveProps(props) {
+    this.setState({reposCount: props.repos.length});
+  }
+  render() {
+    const repos = this.props.repos.map(function(repo, key) {
       return (
         <div key={key} className="thumbnail">
           <div className="caption">
@@ -47,6 +44,6 @@ var UserRepos = React.createClass({
       </div>
     )
   }
-});
+};
 
-module.exports = UserRepos;
+export default UserRepos;
